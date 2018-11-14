@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Военная история</title>
+
+<style type="text/css">
+<!--
+body {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	background-image: url(../Фон/fon.jpg);
+	background-color: #8d955c;
+}
+.style4 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	color: yellow;
+}
+
+#nav ul {
+	margin: 0px;
+	padding: 0px;
+	list-style:none;
+	width:270px;
+}
+#nav  ul li {
+  position: relative;
+  border-bottom:1px solid #ccc;
+  }
+#nav li ul {
+  position: absolute;
+  left: 270px;
+  top: 0;
+  display: none;
+  }
+#nav ul li a {
+  display: block;
+  text-decoration: none; 
+  color: white;
+  background: #6A6E4E;
+  padding: 10px;
+  } 
+ #nav  li:hover ul, #nav li.jshover ul { display: block; }  
+ 
+#nav li:hover  a, #nav li.jshover a {
+  color:#d5d18a;  
+  background-color:  #283227; 
+  }
+#nav  li:hover ul a:hover, #nav li.jshover ul a:hover {
+  background-color:#cccccc;
+  background-image:none;
+  color:#FFFFFF;
+  }
+.style5 {font-weight: bold}
+.main_menu {
+font-family: "Times New Roman", Times, serif;
+	font-size: 20px; font-weight: bold;
+	}
+body,td,th {
+	color: #000000;
+	text-align: left;
+}
+-->
+</style>
+	<script>
+<!--
+var slideShowSpeed = 2500
+		
+		var crossFadeDuration = 9
+		var Pic = new Array() 
+		
+		Pic[0] = 'project/pics/1.jpg'
+		Pic[1] = 'project/pics/2.jpg'
+		Pic[2] = 'project/pics/3.jpg'
+		Pic[3] = 'project/pics/4.jpg'
+		Pic[4] = 'project/pics/5.jpg'
+		Pic[5] = 'project/pics/6.jpg'
+		Pic[6] = 'project/pics/7.jpg'
+		var t
+		var j = 0
+		var p = Pic.length
+		var preLoad = new Array()
+		for (i = 0; i < p; i++){
+		   preLoad[i] = new Image()
+		   preLoad[i].src = Pic[i]
+		}
+		
+		function runSlideShow(){
+		   if (document.all){
+			  document.images.SlideShow.style.filter="blendTrans(duration=2)"
+			  document.images.SlideShow.style.filter="blendTrans(duration=crossFadeDuration)"
+			  document.images.SlideShow.filters.blendTrans.Apply()      
+		   }
+		   document.images.SlideShow.src = preLoad[j].src
+		   if (document.all){
+			  document.images.SlideShow.filters.blendTrans.Play()
+		   }
+		   j = j + 1
+		   if (j > (p-1)) j=0
+		   t = setTimeout('runSlideShow()', slideShowSpeed)
+		}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+jsHover = function() {
+var hEls = document.getElementById("nav").getElementsByTagName("LI");
+for (var i=0, len=hEls.length; i<len; i++) {
+hEls[i].onmouseover=function() { this.className+=" jshover"; }
+hEls[i].onmouseout=function() { this.className=this.className.replace(" jshover", ""); }
+}
+}
+if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attachEvent("onload", jsHover);
+//-->
+</script>
+
+</head>
+
+<body background="../3/fon.jpg" onload="runSlideShow();">
+<table width="1220" height="254" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td align="right" background="../Картинка сверху у сайта/head_main.jpg">&nbsp;</td>
+  </tr>
+</tbody></table>
+<table width="1220" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="FFFFFF">
+  <tbody><tr>
+    <td width="270" height="107" valign="top" bgcolor="#283227">
+		<div id="nav">
+	  <ul class="main_menu">
+	  <li><a href="../Главная.html"><em>Главная</em></a> </li>
+		<li><a href="Руководящие документы.html"><em>Руководящие документы</em></a>
+		  <ul>
+			  <li><a href="Квалификационные требования.html">Квалификационные требования</a></li>
+			  <li><a href="Учебная программа.html">Учебная программа</a></li>
+			 <li><a href="Тематический план.html">Тематический план</a> </li>
+		  </ul>
+		</li>
+		<li><a href="Курс Лекций.html"><em>Курс Лекций</em></a>
+			<ul>
+				<li><a href="Тема 1.html">Тема №1</a></li>
+				<li><a href="Тема 2.html">Тема №2</a></li>
+				<li><a href="Тема 3.html">Тема №3</a></li>
+				<li><a href="Тема 4.html">Тема №4</a></li>
+				<li><a href="Контрольная 1.html">Контрольная  №1</a></li>
+				<li><a href="Контрольная 2.html">Контрольная №2</a></li>
+				<li><a href="Зачет.html">Зачет</a></li>
+			</ul>
+		</li>
+		<li><a href="Зачет.html"><em>Вопросы к зачету</em></a> </li>
+		<li><a href="Текст Воинского Устава.html"><em>Текст Воинского Устава</em></a>
+		<ul>
+				<li><a href="Дисциплинарный устав.html">Дисциплинарный устав</a> </li>
+				<li><a href="Строевой устав.html">Строевой устав</a></li>
+				<li><a href="Устав внутренней службы.html">Устав внутренней службы</a></li>
+				<li><a href="Устав гарнизонной и караульной службы.html">Устав гарнизонной и караульной службы</a></li>
+				<li><a href="Последние изменения.html">Последние изменения</a></li>
+		  </ul>
+		</li>
+		<li><a href="Контрольные тесты.html"><em>Контрольные тесты</em></a> </li>
+		<li><a href="Глоссарий.html"><em>Глоссарий</em></a></li>
+		<li><a href="Видео.html"><em>Видео</em></a></li>
+		<li><a href="Приложение.html">Приложение</a> </li>
+		<li><a href="Аннотация.html"><em>Аннотация</em></a></li>
+	  </ul>		
+	</div>	</td>
+    <td valign="top" bgcolor="#8d955c"><div align="center">
+      <h3>Тематический план</h3>
+      <p style="text-align: center">Тематический план по ОВП ВУС 441000, 094500, 491100, 441400</p>
+      <p><img src="pdf.jpg" width="51" height="77" align="baseline">      <img src="docx.jpg" width="50" height="76"></p>
+      <p>Тематический план по ОВУ для  ВУС 441000, 441400</p>
+      <p><img src="pdf.jpg" width="51" height="77" align="baseline"> <img src="docx.jpg" width="50" height="76"></p>
+      <p>Тематический план по ОВУ для ВУС 390400 , 093500</p>
+      <p><img src="pdf.jpg" width="51" height="77" align="baseline"> <img src="docx.jpg" width="50" height="76"></p>
+    </div></td>
+  </tr>
+    <tr>
+      <td height="107" valign="top" bgcolor="#283227">&nbsp;</td>
+      <td valign="top" bgcolor="#8d955c">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<table width="1220" height="52" border="0" align="center" cellpadding="0" cellspacing="0" style="border-top:inherit ">
+  <tbody><tr>
+    <td height="50" align="center" valign="middle" bgcolor="#283227"><blockquote>
+      <blockquote>
+        <p align="left" class="style4">
+          <em>Нижегородский государственный университет&nbsp;&nbsp;им. Н. И. Лобачевского.  Институт Военного Образования</em><em>. 2018 г.</em></p>
+        </blockquote>
+    </blockquote></td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+
+
+</body></html>
