@@ -61,97 +61,79 @@ body,td,th {
 }
 -->
 </style>
-	<script>
-<!--
-var slideShowSpeed = 2500
-		
-		var crossFadeDuration = 9
-		var Pic = new Array() 
-		var t
-		var j = 0
-		var p = Pic.length
-		var preLoad = new Array()
-		for (i = 0; i < p; i++){
-		   preLoad[i] = new Image()
-		   preLoad[i].src = Pic[i]
-		}
-		
-		function runSlideShow(){
-		   if (document.all){
-			  document.images.SlideShow.style.filter="blendTrans(duration=2)"
-			  document.images.SlideShow.style.filter="blendTrans(duration=crossFadeDuration)"
-			  document.images.SlideShow.filters.blendTrans.Apply()      
-		   }
-		   document.images.SlideShow.src = preLoad[j].src
-		   if (document.all){
-			  document.images.SlideShow.filters.blendTrans.Play()
-		   }
-		   j = j + 1
-		   if (j > (p-1)) j=0
-		   t = setTimeout('runSlideShow()', slideShowSpeed)
-		}
 
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-}
+	
+	<script type="text/javascript">
+var op=1;          // Прозрачность
+var img_front=1;   // Индекс отображаемой картинки
+var img_back=2;    // Индекс фоновой картинки
+var img_total=8;   // Общее количество картинок в ротации
 
-function MM_findObj(n, d) { //v4.01
-  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
-    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
-  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
-  if(!x && d.getElementById) x=d.getElementById(n); return x;
-}
+// Функция изменения прозрачности отображаемой картинки
+function fade() {
+    // Непрозрачность уменьшается
+    op-=0.1;
+    if (op<0) {
+        // Картинка непрозрачная
+        op=1;
 
-function MM_nbGroup(event, grpName) { //v6.0
-  var i,img,nbArr,args=MM_nbGroup.arguments;
-  if (event == "init" && args.length > 2) {
-    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
-      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
-      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
-      nbArr[nbArr.length] = img;
-      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
-        if (!img.MM_up) img.MM_up = img.src;
-        img.src = img.MM_dn = args[i+1];
-        nbArr[nbArr.length] = img;
-    } }
-  } else if (event == "over") {
-    document.MM_nbOver = nbArr = new Array();
-    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
-      if (!img.MM_up) img.MM_up = img.src;
-      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
-      nbArr[nbArr.length] = img;
+        // Берем следующие картинки
+        img_front++;
+        img_back++;
+        // Если показали все, то переходим обратно на первую
+        if (img_front>img_total) { img_front=1; }
+        if (img_back>img_total) { img_back=1; }
+
+        // Установить новые картинки на фон и отображение
+        var tmp=document.getElementById('sh_front');
+        // Прозрачность для браузеров
+        tmp.style.opacity=op;
+        // Прозрачность для IE
+        tmp.style.filter='progid:DXImageTransform.Microsoft.Alpha(opacity=100)';
+        tmp.src='images/img'+img_front+'.jpg';
+        var tmp=document.getElementById('sh_back');
+        tmp.src='images/img'+img_back+'.jpg';
+
+        // Пауза между сменой картинок в 5 секунд
+        setTimeout('waiting()',5000);
     }
-  } else if (event == "out" ) {
-    for (i=0; i < document.MM_nbOver.length; i++) {
-      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
-  } else if (event == "down") {
-    nbArr = document[grpName];
-    if (nbArr)
-      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
-    document[grpName] = nbArr = new Array();
-    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
-      if (!img.MM_up) img.MM_up = img.src;
-      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
-      nbArr[nbArr.length] = img;
-  } }
+    else {
+        // Установить новое значение прозрачности для верхней картинки
+        var tmp=document.getElementById('sh_front');
+        // Прозрачность для браузеров
+        tmp.style.opacity=op;
+        // Прозрачность для IE
+        tmp.style.filter='progid:DXImageTransform.Microsoft.Alpha(opacity=' +
+              Math.round(op*100)+')';
+
+        // Следующая итерация цикла затухания
+        setTimeout('fade()',50);
+    }
 }
 
-jsHover = function() {
-var hEls = document.getElementById("nav").getElementsByTagName("LI");
-for (var i=0, len=hEls.length; i<len; i++) {
-hEls[i].onmouseover=function() { this.className+=" jshover"; }
-hEls[i].onmouseout=function() { this.className=this.className.replace(" jshover", ""); }
+// Функция запуска эффекта затухания
+function waiting() {
+    fade();
 }
-}
-if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attachEvent("onload", jsHover);
-//-->
 </script>
 
-</head>
+<div style="position: relative; height:600px; width:800px; margin: auto;">
+   <img style="position: absolute; top:0px;" id="sh_back" src="Главная_files/1.jpg" width="768" height="576" alt="">
+         <img style="position: absolute; top:0px;" id="sh_front" src="Главная_files/2.jpg" width="768" height="576" alt=""> 
+			  <img style="position: absolute; top:0px;" id="sh_front1" src="Главная_files/4.jpg" width="768" height="576" alt=""> 
+			  <img style="position: absolute; top:0px;" id="sh_front2" src="Главная_files/5.jpg" width="768" height="576" alt=""> 
+</div>
 
+<script type="text/javascript">
+// Запустить слайд-шоу через 5 секунд
+setTimeout('waiting()',5000);
+</script>
+
+	
+	
+	
+	
+</head>
 <body background="../3/fon.jpg" onload="runSlideShow();">
 <table width="1220" height="254" border="0" align="center" cellpadding="0" cellspacing="0">
   <tbody><tr>
@@ -173,20 +155,17 @@ if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attac
 		</li>
 		<li><a href="Страницы/Курс лекций.html"><em>Курс лекций</em></a>
 			<ul>
-				<li><a href="Страницы/Тема 1.html">Тема №1</a></li>
-				<li><a href="Страницы/Тема 2.html">Тема №2</a></li>
-				<li><a href="Страницы/Тема 3.html">Тема №3</a></li>
-				<li><a href="Страницы/Тема 4.html">Тема №4</a></li>
-				<li><a href="Страницы/Зачет.html">Зачет</a></li>
 			</ul>
 		</li>
 		<li><a href="Страницы/Зачет.html"><em>Вопросы к зачету</em></a> </li>
 		<li><a href="Страницы/Общевойсковые уставы ВС РФ.html"><em>Общевойсковые уставы ВС РФ</em></a>
 		  <ul>
+			    <li><a href="Страницы/Устав внутренней службы.html">Устав внутренней службы</a></li>
 				<li><a href="Страницы/Дисциплинарный устав.html">Дисциплинарный устав</a> </li>
+			  	<li><a href="Страницы/Устав гарнизонной и караульной службы.html">Устав гарнизонной и караульной службы</a></li>
 				<li><a href="Страницы/Строевой устав.html">Строевой устав</a></li>
-				<li><a href="Страницы/Устав внутренней службы.html">Устав внутренней службы</a></li>
-				<li><a href="Страницы/Устав гарнизонной и караульной службы.html">Устав гарнизонной и караульной службы</a></li>
+			    <li><a href="Страницы/Устав военной полиции.html">Устав военной полиции</a></li>
+			  <li><a href="Страницы/Дополнительная литература.html">Дополнительная литература</a></li>
 		  </ul>
 		</li>
 		<li><a href="Страницы/Контрольные тесты.html"><em>Контрольные тесты</em></a> </li>
@@ -196,15 +175,20 @@ if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attac
 		<li><a href="Страницы/Аннотация.html"><em>Аннотация</em></a></li>
 	  </ul>		
 	</div>	</td>
-    <td align="left" valign="middle" bgcolor="#8d955c"><div align="center"><img src="Главная_files/1.jpg" width="768" height="576" alt=""/></div></td>
+	  
+	 
+	  
   </tr>
+	  
+
+
+	  
 </tbody></table>
 <table width="1220" height="52" border="0" align="center" cellpadding="0" cellspacing="0" style="border-top:inherit ">
   <tbody><tr>
     <td height="50" align="center" valign="middle" bgcolor="#283227"><blockquote>
       <blockquote>
-        <p align="left" class="style4">
-          <em>Военный учебный центр  Нижегородского государственного университета&nbsp;&nbsp;им. Н. И. Лобачевского. 2018 г.</em> </p>
+        <p align="left" class="style4"><em>Институт военного образования &nbsp;Нижегородского государственного университета&nbsp;&nbsp;им. Н. И. Лобачевского. 2018 г.</em></p>
       </blockquote>
     </blockquote></td>
   </tr>
