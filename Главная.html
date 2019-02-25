@@ -60,76 +60,39 @@ body,td,th {
 	text-align: left;
 }
 -->
+	div#rotator ul li.show {z-index:500;}
 </style>
-
-	
-	<script type="text/javascript">
-var op=1;          // Прозрачность
-var img_front=1;   // Индекс отображаемой картинки
-var img_back=2;    // Индекс фоновой картинки
-var img_total=8;   // Общее количество картинок в ротации
-
-// Функция изменения прозрачности отображаемой картинки
-function fade() {
-    // Непрозрачность уменьшается
-    op-=0.1;
-    if (op<0) {
-        // Картинка непрозрачная
-        op=1;
-
-        // Берем следующие картинки
-        img_front++;
-        img_back++;
-        // Если показали все, то переходим обратно на первую
-        if (img_front>img_total) { img_front=1; }
-        if (img_back>img_total) { img_back=1; }
-
-        // Установить новые картинки на фон и отображение
-        var tmp=document.getElementById('sh_front');
-        // Прозрачность для браузеров
-        tmp.style.opacity=op;
-        // Прозрачность для IE
-        tmp.style.filter='progid:DXImageTransform.Microsoft.Alpha(opacity=100)';
-        tmp.src='images/img'+img_front+'.jpg';
-        var tmp=document.getElementById('sh_back');
-        tmp.src='images/img'+img_back+'.jpg';
-
-        // Пауза между сменой картинок в 5 секунд
-        setTimeout('waiting()',5000);
-    }
-    else {
-        // Установить новое значение прозрачности для верхней картинки
-        var tmp=document.getElementById('sh_front');
-        // Прозрачность для браузеров
-        tmp.style.opacity=op;
-        // Прозрачность для IE
-        tmp.style.filter='progid:DXImageTransform.Microsoft.Alpha(opacity=' +
-              Math.round(op*100)+')';
-
-        // Следующая итерация цикла затухания
-        setTimeout('fade()',50);
-    }
-}
-
-// Функция запуска эффекта затухания
-function waiting() {
-    fade();
-}
-</script>
-
-<div style="position: relative; height:600px; width:800px; margin: auto;">
-   <img style="position: absolute; top:0px;" id="sh_back" src="Главная_files/1.jpg" width="768" height="576" alt="">
-         <img style="position: absolute; top:0px;" id="sh_front" src="Главная_files/2.jpg" width="768" height="576" alt=""> 
-			  <img style="position: absolute; top:0px;" id="sh_front1" src="Главная_files/4.jpg" width="768" height="576" alt=""> 
-			  <img style="position: absolute; top:0px;" id="sh_front2" src="Главная_files/5.jpg" width="768" height="576" alt=""> 
-</div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
-// Запустить слайд-шоу через 5 секунд
-setTimeout('waiting()',5000);
+$(document).ready(function(){
+	
+	//Массив картинок
+	var image_array = [
+        'Главная_files/1.JPG',
+        'Главная_files/2.jpg',
+        'Главная_files/3.jpg',
+        'Главная_files/4.jpg',
+		'Главная_files/5.jpg'
+	];
+	
+	var image_num = 1;
+
+	function slide() { 
+		
+		$('.slideshow img').animate({opacity: 0.4}, 500).attr('src',image_array[image_num]).animate({opacity: 1}, 500);
+		image_num++;
+		
+		if( image_num == image_array.length ){
+			image_num = 0;
+		}
+	
+	}
+	setInterval(slide, 3000);
+});
 </script>
 
-	
+
+
 	
 	
 	
@@ -174,7 +137,27 @@ setTimeout('waiting()',5000);
 		<li><a href="Страницы/Приложение.html"><em>Приложения</em></a></li>
 		<li><a href="Страницы/Аннотация.html"><em>Аннотация</em></a></li>
 	  </ul>		
-	</div>	</td>
+	</div>
+	 <span style="position: relative; height:600px; width:800px; margin: auto;"></span>
+</td>
+	  
+	  <th height="3"  valign="top" bgcolor="#8d955c">
+		<h1><strong><em> </em></strong></h1>  
+			
+
+<!--
+				<div align="center" >		
+   <img  id="sh_back" src="Главная_files/1.JPG" width="768" height="576">			
+   <img  id="sh_front"  src="Главная_files/2.jpg" width="768" height="576">					
+</div>
+-->
+		  <div align="center" class="slideshow"><img src="Главная_files/1.JPG" width="768" height="576"></div>
+
+				
+
+
+	
+    </th>
 	  
 	 
 	  
