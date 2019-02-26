@@ -1,17 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<title>УМК Общевоинские уставы</title>
+<title>Общевоинские уставы</title>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script>
-        {  
-			var rand = 1 + Math.random() * (10 + 1 - 1);
-    		rand = Math.floor(rand);
-			if (rand<5)
-			window.location.href = "https://goo.gl/forms/9s5azX9FKZlQ8oWw2"
-			else
-				window.location.href = "https://goo.gl/forms/9s5azX9FKZlQ8oWw2"
-  			}
+		
+		function getRandomInt(min, max) {
+  						return Math.floor(Math.random() * (max - min)) + min;
+		}
+			var rand = getRandomInt(1, 4);
+    		switch (rand) {
+  				case 1:
+    				window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScCeyY2F48sLQmHY5Q8IKAy8d2BCAcY_Xb6qtaHOmGHoaIZog/viewform?usp=sf_link";
+    			break;
+  				case 2:
+					window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSfsrdsJ71FS_0Dq1hrdGNrqDdEPyEtKp0-fRDcJqDMr_v43pw/viewform?usp=sf_link";
+    			break;
+  					case 3:
+    				window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSeuKaGTOl3pMaBeLThy4St4c7Fr5YsUpAWIWMtjRcQZ2t6x3g/viewform?usp=sf_link";
+				break;
+  				default:
+    			window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSer6HbCZeuHqpUwwGUk2jazcTi975ZiOje1u0OwfviGtXO3YA/viewform?usp=sf_link";
+			}	
     </script>
+	
+	
 <style type="text/css">
 <!--
 body {
@@ -238,7 +250,7 @@ if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attac
     <td height="50" align="center" valign="middle" bgcolor="#283227"><blockquote>
       <blockquote>
         <p align="left" class="style4">
-          <em>Военный учебный центр  Нижегородского государственного университета&nbsp;&nbsp;им. Н. И. Лобачевского. 2018 г.</em> </p>
+          <em>Военный учебный центр  Нижегородского государственного университета&nbsp;&nbsp;им. Н. И. Лобачевского. <script>new Date().getFullYear()>2010&&document.write(""+new Date().getFullYear());</script> г.</em> </p>
         </blockquote>
     </blockquote></td>
   </tr>
